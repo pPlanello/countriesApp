@@ -1,0 +1,33 @@
+<table class="table table-hover" index="index">
+    <thead>
+        <tr>
+            <th>Nº</th>
+            <th>Bandera</th>
+            <th>Nombre</th>
+            <th>Población</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of data; index as i">
+            <td>
+                {{ i+1 }}
+            </td>
+            <td>
+                <img class="small-flag" [src]="item.flags.svg">
+            </td>
+            <td>
+                {{ item.name.common }}
+            </td>
+            <td>
+                {{ item.population | number }}
+            </td>
+            <td>
+                <img class="small-flag">
+            </td>
+            <td>
+                <a [routerLink]="['/pais', item.ccn3]" routerLinkActive="router-link-active" > Ver</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

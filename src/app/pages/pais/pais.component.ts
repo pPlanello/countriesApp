@@ -13,21 +13,8 @@ export class PaisComponent implements OnInit {
   isErrorHttp: boolean = false;
   countries: Country[] = [];
 
-  constructor(private paisService: PaisService) { }
+  constructor(public paisService: PaisService) { }
 
   ngOnInit(): void {
   }
-
-  findCountry() {
-    console.log(this.valueToFind)
-    this.isErrorHttp = false;
-    this.paisService.findCountries(this.valueToFind).subscribe((data: Country[]) => {
-      console.log(data)
-      this.countries = data;
-    }, error => {
-      this.isErrorHttp = true;
-      console.log('error: ', error);
-    });
-  }
-
 }

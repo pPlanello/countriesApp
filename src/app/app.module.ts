@@ -21,6 +21,8 @@ import { SidebarComponent } from './shared/components/sidebar/sidebar.component'
     PaisModule,
     RegionModule
   ],
+  exports: [
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
