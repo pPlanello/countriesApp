@@ -1,10 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CapitalComponent } from './pages/capital/capital.component';
+import { PaisComponent } from './pages/pais/pais.component';
+import { RegionComponent } from './pages/region/region.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: PaisComponent
+  },
+  {
+    path: 'region',
+    component: RegionComponent
+  },
+  {
+    path: 'capital',
+    component: CapitalComponent
+  },
+  {
+    path: 'pais/:id',
+    component: PaisComponent
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [ RouterModule.forRoot(routes) ],
+  exports: [ RouterModule ]
 })
 export class AppRoutingModule { }
