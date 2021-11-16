@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CapitalComponent } from './pages/capital/capital.component';
+import { PaisModalComponent } from './pages/pais/pais-modal/pais-modal.component';
 import { PaisComponent } from './pages/pais/pais.component';
 import { RegionComponent } from './pages/region/region.component';
 
@@ -19,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'pais/:id',
-    component: PaisComponent
+    component: PaisModalComponent
   },
   {
     path: '**',
