@@ -4,7 +4,6 @@ import { PaisComponent } from './pais.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { PaisModalComponent } from './pais-modal/pais-modal.component';
-import { GenericTableModule } from 'src/app/shared/modules/generic-table/generic-table.module';
 import { FilterTableModule } from 'src/app/shared/modules/filter-table/filter-table.module';
 
 
@@ -18,7 +17,6 @@ import { FilterTableModule } from 'src/app/shared/modules/filter-table/filter-ta
     CommonModule,
     RouterModule,
     FormsModule,
-    GenericTableModule,
     FilterTableModule
   ]
 })

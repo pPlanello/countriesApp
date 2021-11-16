@@ -14,12 +14,17 @@
 
 <hr>
 
-<div *ngIf="isErrorHttp && data.length === 0" class="alert alert-danger">
+<div *ngIf="isErrorHttp" class="alert alert-danger">
     No se ha encontrado nada con el término de busqueda
 </div>
 
 <div *ngIf="!isErrorHttp && data.length > 0" class="row">
     <div class="col">
-        <app-generic-table [data]="data"></app-generic-table>
+        <app-generic-table 
+            [data]="data"
+            [cols]="cols"
+            [colRouterLink]="colRouterLink"
+            [colRedirectUrlLink]="colRedirectUrlLink">
+        </app-generic-table>
     </div>
 </div>

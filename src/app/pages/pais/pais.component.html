@@ -2,4 +2,9 @@
 
 <hr>
 
-<app-filter-table [service]="paisService"></app-filter-table>
+<app-filter-table 
+    [service]="paisService" 
+    [cols]="cols"
+    [colRouterLink]="true"
+    [colRedirectUrlLink]="'pais'">
+</app-filter-table>
