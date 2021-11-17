@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { Col } from '../../models/col.model';
+
 import { AbstractServiceService } from '../../services/abstract-service.service';
 
 @Component({
@@ -14,6 +17,8 @@ export class FilterTableComponent implements OnInit {
   @Input() colRouterLink: boolean = false;
   @Input() colRedirectUrlLink: string = '';
 
+  debouncer: Subject<string> = new Subject(); // Observable
+
   data: any[] = [];
 
   valueToFind: string = '';
@@ -24,6 +29,9 @@ export class FilterTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.debouncer.pipe(debounceTime(300)).subscribe( value => {
+      console.log(value)
+    });
   }
 
   find() {
@@ -35,5 +43,9 @@ export class FilterTableComponent implements OnInit {
       this.valueToFind = '';
       console.log('**** Error: ', error);
     });
+  }
+
+  keyPressed() {
+    this.debouncer.next(this.valueToFind);
   }
 }
