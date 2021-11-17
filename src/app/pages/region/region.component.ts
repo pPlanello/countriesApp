@@ -16,6 +16,7 @@ export class RegionComponent implements OnInit {
       { field: 'index', title: 'Nº', type: ColType.INDEX, isIndex: true },
       { field: 'flags', subField: 'svg', title: 'Bandera', type: ColType.IMAGE },
       { field: 'name', subField: 'common', title: 'País', type: ColType.TEXT },
+      { field: 'region', title: 'Región', type: ColType.TEXT },
       { field: 'population', title: 'Población', type: ColType.NUMBER }
     ];
   }

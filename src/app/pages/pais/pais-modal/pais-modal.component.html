@@ -1,1 +1,35 @@
-<p>pais-modal works!</p>
+<div *ngIf="!country; else paisBody" class="alert alert-info">
+    Espere por favor...
+</div>
+
+<ng-template #paisBody>
+    <div class="row">
+        <div class="col-12">
+            <h3 style="background-color:rgb(224, 222, 222); padding: 10px;">Pais: <small>{{country.name.common}}</small> </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <h3>Bandera</h3>
+            <img [src]="country.flags.svg" class="medium-flag">
+        </div>
+        <div class="col">
+            <h4>Información</h4>
+            <ul class="list-group-item">
+                <li class="list-group-item">
+                    <strong>Población: </strong> {{country.population | number}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Capital: </strong> {{country.capital}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Región: </strong> {{country.region}}
+                </li>
+                <li class="list-group-item">
+                    <strong>Dimensiones: </strong> {{country.area | number}} &#13218;
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-template>
+

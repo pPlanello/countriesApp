@@ -11,6 +11,6 @@ import { AbstractServiceService } from './abstract-service.service';
 export class CapitalService extends AbstractServiceService<Capital> {
 
   constructor( http: HttpClient) { 
-    super(http, environment.endpoints.region);
+    super(http, environment.endpoints.capital);
   }
 }
