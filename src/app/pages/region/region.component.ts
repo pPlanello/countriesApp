@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Col, ColType } from 'src/app/shared/models/col.model';
+import { DataService } from 'src/app/shared/services/data.service';
 import { RegionService } from 'src/app/shared/services/region.service';
 
 @Component({
@@ -10,8 +11,12 @@ import { RegionService } from 'src/app/shared/services/region.service';
 export class RegionComponent implements OnInit {
 
   cols: Col[] = [];
-  
-  constructor(public regionService: RegionService) {
+
+  get regions() {
+    return this.dataService.regions;
+  }
+
+  constructor(public regionService: RegionService, public dataService: DataService) {
     this.cols = [
       { field: 'index', title: 'Nº', type: ColType.INDEX, isIndex: true },
       { field: 'flags', subField: 'svg', title: 'Bandera', type: ColType.IMAGE },

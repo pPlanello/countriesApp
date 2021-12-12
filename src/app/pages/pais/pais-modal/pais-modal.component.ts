@@ -13,6 +13,7 @@ import { PaisService } from 'src/app/shared/services/pais.service';
 export class PaisModalComponent implements OnInit {
 
   country!: Country;
+  translations: string[] = [];
 
   constructor(private activatedRoute: ActivatedRoute, private paisService: PaisService) { }
 
@@ -24,10 +25,15 @@ export class PaisModalComponent implements OnInit {
     //   });
     // });
 
+    this.translations = [];
     this.activatedRoute.params.pipe(
         switchMap((params) => this.paisService.getPaisById(params.id)),
         tap(console.log)
-      ).subscribe((resp: Country[]) => this.country = resp[0]);
+      ).subscribe((resp: Country[]) => {
+        this.country = resp[0];
+        let obj = this.country.translations;
+        Object.keys(this.country.translations).forEach(key => this.translations.push(obj[key].official));
+      });
   }
 
 }
