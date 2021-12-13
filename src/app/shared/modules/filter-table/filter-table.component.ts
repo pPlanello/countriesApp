@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { Col } from '../../models/col.model';
+import { RegionFilter } from '../../models/filter.model';
 
 import { AbstractServiceService } from '../../services/abstract-service.service';
 
@@ -16,6 +17,7 @@ export class FilterTableComponent implements OnInit {
   @Input() cols: Col[] = [];
   @Input() colRouterLink: boolean = false;
   @Input() colRedirectUrlLink: string = '';
+  @Input() regionsField: RegionFilter[] = [];
 
   debouncer: Subject<string> = new Subject(); // Observable
 
@@ -32,6 +34,8 @@ export class FilterTableComponent implements OnInit {
     this.debouncer.pipe(debounceTime(300)).subscribe( value => {
       console.log(value)
     });
+
+    console.log(this.regionsField)
   }
 
   find() {
@@ -47,5 +51,16 @@ export class FilterTableComponent implements OnInit {
 
   keyPressed() {
     this.debouncer.next(this.valueToFind);
+  }
+
+  regionSelected(region: RegionFilter) {
+    this.isErrorHttp = false;
+    this.service.findByName(region.field).subscribe((data: any[]) => {
+      this.data = data;
+    }, error => {
+      this.isErrorHttp = true;
+      this.valueToFind = '';
+      console.log('**** Error: ', error);
+    });
   }
 }

@@ -1,5 +1,8 @@
+<!-- Si es una region -->
+<h5 *ngIf="regionsField.length > 0"> Seleccione la región </h5>
 
-<div class="row">
+<!-- Si no es una region -->
+<div *ngIf="(regionsField.length === 0); else regionContent" class="row">
     <div class="col">
         <form (ngSubmit)="find()" autocomplete="off">
             <input 
@@ -13,12 +16,20 @@
     </div>
 </div>
 
+<ng-template #regionContent  class="row">
+    <div class="col">
+        <button
+            style="margin-right: 5px;"
+            class="btn btn-outline-primary"
+            *ngFor="let region of regionsField"
+            (click)="regionSelected(region)">{{region.value_es}}
+        </button>
+    </div>
+</ng-template>
+
 <hr>
 
-<div *ngIf="isErrorHttp" class="alert alert-danger">
-    No se ha encontrado nada con el término de busqueda
-</div>
-
+<!-- Contenido de la tabla -->
 <div *ngIf="!isErrorHttp && data.length > 0" class="row">
     <div class="col">
         <app-generic-table 
@@ -28,4 +39,9 @@
             [colRedirectUrlLink]="colRedirectUrlLink">
         </app-generic-table>
     </div>
+</div>
+
+<!-- Mensaje en caso de tabla vacia -->
+<div *ngIf="isErrorHttp" class="alert alert-danger">
+    No se ha encontrado nada con el término de busqueda
 </div>
