@@ -1,15 +1,10 @@
-<h1 style="background-color: #6898E0; text-align: center; padding-bottom: 10px;">{{title}}</h1>
+<h1 class="titleStyle">{{title}}</h1>
+<!-- Sidebar -->
+<div class="sidebarStyle">
+    <app-sidebar></app-sidebar>
+</div>
 
-<div class="row" style="height: 100%; display: flex; align-content: flex-end; align-items: center;">
-
-    <!-- Sidebar -->
-    <div style="background-color: #6898E0; margin-top: -10px; margin-left: 10px; margin-bottom: initial;"class="col-3">
-        <app-sidebar></app-sidebar>
-    </div>
-
-    <!-- Body -->
-    <div class="col">
-        <router-outlet></router-outlet>
-    </div>
-
+<!-- Body -->
+<div class="row bodyContent">
+    <router-outlet></router-outlet>
 </div>

@@ -1,0 +1,19 @@
+.titleStyle {
+  background-color: #6898E0;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.sidebarStyle {
+    position: absolute;
+    width: 25%;
+    background-color: #6898E0;
+    padding-bottom: 100%;
+    padding-top: 10px;
+    margin-top: -11px;
+    padding-inline-start: 10px;
+}
+
+.bodyContent {
+    margin-left: 25%;
+}
