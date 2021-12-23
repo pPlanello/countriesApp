@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
+
 import { Col, ColType } from '../../models/col.model';
 
 @Component({

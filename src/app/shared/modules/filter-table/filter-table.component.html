@@ -5,14 +5,23 @@
 <div *ngIf="(regionsField.length === 0); else regionContent" class="row">
     <div class="col">
         <form (ngSubmit)="find()" autocomplete="off">
-            <input 
+            <input
                 type="text"
                 name="termino"
                 class="form-control"
-                placeholder="Buscar país..."
+                [placeholder]="filterPlaceHolder"
                 [(ngModel)]="valueToFind"
                 (input)="keyPressed()">
         </form>
+        <!-- Sugerencias de búsqueda -->
+        <ul class="list-group">
+          <li
+            class="list-group-item list-group-item-action"
+            *ngFor="let suggestion of suggestions"
+            (click)="selectedSuggestions(suggestion)">
+            {{suggestion}}
+          </li>
+        </ul>
     </div>
 </div>
 
@@ -20,7 +29,7 @@
     <div class="col">
         <button
             style="margin-right: 5px;"
-            class="btn btn-outline-primary"
+            [ngClass]="regionActive === region ? 'btn btn-primary' : 'btn btn-outline-primary'"
             *ngFor="let region of regionsField"
             (click)="regionSelected(region)">{{region.value_es}}
         </button>
@@ -32,7 +41,7 @@
 <!-- Contenido de la tabla -->
 <div *ngIf="!isErrorHttp && data.length > 0" class="row">
     <div class="col">
-        <app-generic-table 
+        <app-generic-table
             [data]="data"
             [cols]="cols"
             [colRouterLink]="colRouterLink"

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Col, ColType } from 'src/app/shared/models/col.model';
 import { DataService } from 'src/app/shared/services/data.service';
 import { RegionService } from 'src/app/shared/services/region.service';
